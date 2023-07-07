@@ -18,14 +18,6 @@ class CharacterRepository {
     private val gson = GsonBuilder()
         .create()
 
-    private fun provideOkHttpClientWithProgress(): OkHttpClient =
-        OkHttpClient().newBuilder()
-            .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
-            .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
-            .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
-            .build()
-
-
     private val retrofit = Retrofit.Builder()
         .client(provideOkHttpClientWithProgress())
         .baseUrl(BASE_URL)
@@ -35,4 +27,16 @@ class CharacterRepository {
     private val rickAndMortyApi by lazy {
         retrofit.create(RickAndMortyApi::class.java)
     }
+
+    suspend fun getFirstPage(): List<Character> {
+        return rickAndMortyApi.getFirstPage().results
+    }
+
+    private fun provideOkHttpClientWithProgress(): OkHttpClient =
+        OkHttpClient().newBuilder()
+            .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
+            .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
+            .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
+            .build()
+
 }
