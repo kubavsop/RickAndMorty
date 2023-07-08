@@ -1,9 +1,15 @@
 package com.example.shiftsummer2023.data
 
+import com.google.gson.annotations.SerializedName
+
 enum class CharacterGender {
-    Female,
-    Male,
-    Genderless,
-    unknown
+    @SerializedName("Female")
+    FEMALE,
+    @SerializedName("Male")
+    MALE,
+    @SerializedName("Genderless")
+    GENDERLESS,
+    @SerializedName("unknown")
+    UNKNOWN
 }
 
