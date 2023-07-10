@@ -1,14 +1,18 @@
 package com.example.shiftsummer2023.presentation
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.shiftsummer2023.domain.usecase.GetFirstPageUseCase
 import com.example.shiftsummer2023.domain.usecase.GetPageByUrlUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class CharacterListViewModel(
+@HiltViewModel
+class CharacterListViewModel @Inject constructor(
     private val getFirstPageUseCase: GetFirstPageUseCase,
     private val getPageByUrlUseCase: GetPageByUrlUseCase
 ) : ViewModel() {

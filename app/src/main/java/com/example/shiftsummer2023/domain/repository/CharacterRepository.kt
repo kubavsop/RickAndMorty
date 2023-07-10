@@ -1,4 +1,5 @@
 package com.example.shiftsummer2023.domain.repository
+
 import com.example.shiftsummer2023.domain.models.Characters
 
 interface CharacterRepository {

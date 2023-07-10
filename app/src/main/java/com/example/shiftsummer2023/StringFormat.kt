@@ -12,7 +12,7 @@ fun formatCharacterStatus(context: Context, status: CharacterStatus): String =
     }
 
 fun formatCharacterGender(context: Context, gender: CharacterGender): String =
-    when(gender) {
+    when (gender) {
         CharacterGender.FEMALE -> context.getString(R.string.female)
         CharacterGender.UNKNOWN -> context.getString(R.string.unknown)
         CharacterGender.GENDERLESS -> context.getString(R.string.genderless)
