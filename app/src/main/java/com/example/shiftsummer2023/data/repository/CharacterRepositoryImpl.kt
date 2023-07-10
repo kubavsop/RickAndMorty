@@ -1,12 +1,16 @@
-package com.example.shiftsummer2023.data
+package com.example.shiftsummer2023.data.repository
 
+import com.example.shiftsummer2023.data.api.RickAndMortyApi
+import com.example.shiftsummer2023.data.models.CharactersConverter
+import com.example.shiftsummer2023.domain.models.Characters
+import com.example.shiftsummer2023.domain.repository.CharacterRepository
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class CharacterRepository {
+class CharacterRepositoryImpl (private val charactersConverter: CharactersConverter): CharacterRepository {
 
     private companion object {
         const val BASE_URL = "https://rickandmortyapi.com/api/"
@@ -28,8 +32,12 @@ class CharacterRepository {
         retrofit.create(RickAndMortyApi::class.java)
     }
 
-    suspend fun getFirstPage(): List<Character> {
-        return rickAndMortyApi.getFirstPage().results
+    override suspend fun getFirstPage(): Characters {
+        return charactersConverter.convert(rickAndMortyApi.getFirstPage())
+    }
+
+    override suspend fun getPageByUrl(url: String): Characters {
+        return charactersConverter.convert(rickAndMortyApi.getPageByUrl(url))
     }
 
     private fun provideOkHttpClientWithProgress(): OkHttpClient =
@@ -38,5 +46,4 @@ class CharacterRepository {
             .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
             .build()
-
 }

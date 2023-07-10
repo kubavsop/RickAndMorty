@@ -5,8 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shiftsummer2023.R
-import com.example.shiftsummer2023.data.Character
+import com.example.shiftsummer2023.data.models.CharacterModel
 import com.example.shiftsummer2023.databinding.CharacterItemBinding
+import com.example.shiftsummer2023.domain.models.Character
 
 class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
 
