@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">ShiftSummer2023</string>
+    <string name="alive">Alive</string>
+    <string name="dead">Dead</string>
+    <string name="unknown">Unknown</string>
+    <string name="female">Female</string>
+    <string name="genderless">Genderless</string>
+    <string name="male">Male</string>
+    <string name="server_url">https://rickandmortyapi.com/api/</string>
 </resources>

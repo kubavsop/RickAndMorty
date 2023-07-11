@@ -1,4 +1,4 @@
-package com.example.shiftsummer2023.data
+package com.example.shiftsummer2023.domain.models
 
 data class Characters(
     val info: Info,
