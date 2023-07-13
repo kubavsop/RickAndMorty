@@ -3,7 +3,7 @@ package com.example.shiftsummer2023.di
 import android.content.Context
 import com.example.shiftsummer2023.R
 import com.example.shiftsummer2023.data.api.RickAndMortyApi
-import com.example.shiftsummer2023.data.models.CharactersConverter
+import com.example.shiftsummer2023.data.dto.CharactersConverter
 import com.example.shiftsummer2023.data.repository.CharacterRepositoryImpl
 import com.example.shiftsummer2023.domain.repository.CharacterRepository
 import dagger.Module

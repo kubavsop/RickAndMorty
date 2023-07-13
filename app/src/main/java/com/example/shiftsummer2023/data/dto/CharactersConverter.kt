@@ -1,4 +1,4 @@
-package com.example.shiftsummer2023.data.models
+package com.example.shiftsummer2023.data.dto
 
 import com.example.shiftsummer2023.domain.models.Character
 import com.example.shiftsummer2023.domain.models.CharacterGender
@@ -8,7 +8,7 @@ import com.example.shiftsummer2023.domain.models.Characters
 import com.example.shiftsummer2023.domain.models.Info
 
 class CharactersConverter {
-    fun convert(from: CharactersModel): Characters =
+    fun convert(from: CharactersDto): Characters =
         with(from) {
             Characters(
                 info = convertInfo(info),
@@ -16,7 +16,7 @@ class CharactersConverter {
             )
         }
 
-    private fun convertInfo(from: InfoModel): Info =
+    private fun convertInfo(from: InfoDto): Info =
         with(from) {
             Info(
                 count = count,
@@ -26,7 +26,7 @@ class CharactersConverter {
             )
         }
 
-    private fun convertCharacter(from: CharacterModel): Character =
+    private fun convertCharacter(from: CharacterDto): Character =
         with(from) {
             Character(
                 id = id,
@@ -44,7 +44,7 @@ class CharactersConverter {
             )
         }
 
-    private fun convertLocation(from: CharacterLocationModel): CharacterLocation =
+    private fun convertLocation(from: CharacterLocationDto): CharacterLocation =
         with(from) {
             CharacterLocation(
                 name = name,

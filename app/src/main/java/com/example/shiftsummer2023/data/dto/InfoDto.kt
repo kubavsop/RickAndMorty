@@ -1,6 +1,6 @@
-package com.example.shiftsummer2023.data.models
+package com.example.shiftsummer2023.data.dto
 
-data class InfoModel(
+data class InfoDto(
     val count: Int,
     val pages: Int,
     val next: String?,

@@ -1,8 +1,8 @@
-package com.example.shiftsummer2023.data.models
+package com.example.shiftsummer2023.data.dto
 
 import com.google.gson.annotations.SerializedName
 
-enum class CharacterGenderModel {
+enum class CharacterGenderDto {
     @SerializedName("Female")
     FEMALE,
 

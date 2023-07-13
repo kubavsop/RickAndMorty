@@ -47,8 +47,10 @@ class CharacterListFragment : Fragment() {
         }
     }
 
+
     override fun onDestroyView() {
         super.onDestroyView()
+        binding.characterList.adapter = null
         _binding = null
     }
 }

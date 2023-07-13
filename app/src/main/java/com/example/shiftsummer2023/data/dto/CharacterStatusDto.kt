@@ -1,8 +1,8 @@
-package com.example.shiftsummer2023.data.models
+package com.example.shiftsummer2023.data.dto
 
 import com.google.gson.annotations.SerializedName
 
-enum class CharacterStatusModel {
+enum class CharacterStatusDto {
     @SerializedName("Alive")
     ALIVE,
 
