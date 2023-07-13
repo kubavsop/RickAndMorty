@@ -6,10 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.paging.PagingData
+import androidx.paging.map
+import com.example.shiftsummer2023.data.local.entity.CharacterEntity
+import com.example.shiftsummer2023.data.mappers.toCharacter
 import com.example.shiftsummer2023.databinding.FragmentCharacterListBinding
 import com.example.shiftsummer2023.domain.models.Character
 import com.example.shiftsummer2023.presentation.CharacterListState
 import com.example.shiftsummer2023.presentation.CharacterListViewModel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 
 class CharacterListFragment : Fragment() {
 
@@ -30,22 +39,29 @@ class CharacterListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.characterList.adapter = CharacterAdapter()
-        viewModel.state.observe(viewLifecycleOwner, ::handleState)
-        viewModel.loadData()
+        lifecycleScope.launch {
+            with(binding) {
+                viewModel.characterPagingFlow.collectLatest { pagingData ->
+                    (characterList.adapter as? CharacterAdapter)?.submitData(pagingData)
+                }
+            }
+        }
+//        viewModel.state.observe(viewLifecycleOwner, ::handleState)
+//        viewModel.loadData()
     }
 
-    private fun handleState(state: CharacterListState) {
-        when (state) {
-            CharacterListState.Initial -> Unit
-            is CharacterListState.Content -> showContent(state.items)
-        }
-    }
-
-    private fun showContent(characters: List<Character>) {
-        with(binding) {
-            (characterList.adapter as? CharacterAdapter)?.characterList = characters
-        }
-    }
+//    private fun handleState(state: CharacterListState) {
+//        when (state) {
+//            CharacterListState.Initial -> Unit
+//            is CharacterListState.Content -> showContent(state.items)
+//        }
+//    }
+//
+//    private fun showContent(characters: List<Character>) {
+//        with(binding) {
+//            (characterList.adapter as? CharacterAdapter)?.characterList = characters
+//        }
+//    }
 
 
     override fun onDestroyView() {
