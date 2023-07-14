@@ -2,12 +2,16 @@ package com.example.shiftsummer2023.screen
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingData
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shiftsummer2023.databinding.CharacterItemBinding
 import com.example.shiftsummer2023.domain.models.Character
 import com.example.shiftsummer2023.formatCharacterGender
 
-class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
+class CharacterAdapter :
+    PagingDataAdapter<Character, CharacterAdapter.CharacterViewHolder>(CHARACTER_COMPARATOR) {
 
     class CharacterViewHolder(private val binding: CharacterItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -17,7 +21,7 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHold
         }
     }
 
-    var characterList: List<Character> = emptyList()
+    var characterList: PagingData<Character> = PagingData.empty()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -29,11 +33,18 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHold
         return CharacterViewHolder(binding)
     }
 
-    override fun getItemCount(): Int {
-        return characterList.size
-    }
-
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
-        holder.bind(characterList[position])
+        val item = getItem(position)
+        item?.let {
+            holder.bind(it)
+        }
     }
+}
+
+val CHARACTER_COMPARATOR = object : DiffUtil.ItemCallback<Character>() {
+    override fun areItemsTheSame(oldItem: Character, newItem: Character): Boolean =
+        oldItem.id == newItem.id
+
+    override fun areContentsTheSame(oldItem: Character, newItem: Character): Boolean =
+        oldItem == newItem
 }

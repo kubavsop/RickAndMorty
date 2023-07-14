@@ -1,9 +1,15 @@
 package com.example.shiftsummer2023.di
 
 import android.content.Context
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.room.Room
 import com.example.shiftsummer2023.R
-import com.example.shiftsummer2023.data.api.RickAndMortyApi
-import com.example.shiftsummer2023.data.dto.CharactersConverter
+import com.example.shiftsummer2023.data.local.CharacterDatabase
+import com.example.shiftsummer2023.data.local.entity.CharacterEntity
+import com.example.shiftsummer2023.data.remote.CharacterRemoteMediator
+import com.example.shiftsummer2023.data.remote.RickAndMortyApi
 import com.example.shiftsummer2023.data.repository.CharacterRepositoryImpl
 import com.example.shiftsummer2023.domain.repository.CharacterRepository
 import dagger.Module
@@ -15,6 +21,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
+@OptIn(ExperimentalPagingApi::class)
 @Module
 @InstallIn(SingletonComponent::class)
 class DataModule {
@@ -31,16 +38,39 @@ class DataModule {
 
     @Provides
     @Singleton
-    fun provideCharacterConverter(): CharactersConverter = CharactersConverter()
+    fun provideCharacterDatabase(@ApplicationContext context: Context): CharacterDatabase {
+        return Room.databaseBuilder(
+            context,
+            CharacterDatabase::class.java,
+            "characters.db"
+        ).build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideCharacterPager(
+        characterDb: CharacterDatabase,
+        characterApi: RickAndMortyApi
+    ): Pager<Int, CharacterEntity> {
+        return Pager(
+            config = PagingConfig(pageSize = 20),
+            remoteMediator = CharacterRemoteMediator(
+                characterDb = characterDb,
+                characterApi = characterApi
+            ),
+            pagingSourceFactory = {
+                characterDb.dao.pagingSource()
+            }
+        )
+    }
+
 
     @Provides
     @Singleton
     fun provideCharacterRepository(
-        charactersConverter: CharactersConverter,
         rickAndMortyApi: RickAndMortyApi
     ): CharacterRepository =
         CharacterRepositoryImpl(
-            charactersConverter = charactersConverter,
             rickAndMortyApi = rickAndMortyApi
         )
 }

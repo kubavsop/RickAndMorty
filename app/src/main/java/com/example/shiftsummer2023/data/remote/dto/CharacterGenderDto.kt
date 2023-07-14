@@ -1,4 +1,4 @@
-package com.example.shiftsummer2023.data.dto
+package com.example.shiftsummer2023.data.remote.dto
 
 import com.google.gson.annotations.SerializedName
 
