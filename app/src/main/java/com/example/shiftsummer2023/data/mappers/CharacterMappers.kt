@@ -4,9 +4,9 @@ import com.example.shiftsummer2023.data.local.entity.CharacterEntity
 import com.example.shiftsummer2023.data.local.entity.CharacterGenderEntity
 import com.example.shiftsummer2023.data.local.entity.CharacterStatusEntity
 import com.example.shiftsummer2023.data.remote.dto.CharacterDto
-import com.example.shiftsummer2023.domain.models.Character
-import com.example.shiftsummer2023.domain.models.CharacterGender
-import com.example.shiftsummer2023.domain.models.CharacterStatus
+import com.example.shiftsummer2023.domain.model.Character
+import com.example.shiftsummer2023.domain.model.CharacterGender
+import com.example.shiftsummer2023.domain.model.CharacterStatus
 
 fun CharacterDto.toCharacterEntity(): CharacterEntity {
     return CharacterEntity(

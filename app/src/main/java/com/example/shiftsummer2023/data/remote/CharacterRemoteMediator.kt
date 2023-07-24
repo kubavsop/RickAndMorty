@@ -39,7 +39,7 @@ class CharacterRemoteMediator(
             }
 
             val characters = characterApi.getCharacterList(
-                page = loadKey,
+                page = loadKey
             ).results
 
             characterDb.withTransaction {

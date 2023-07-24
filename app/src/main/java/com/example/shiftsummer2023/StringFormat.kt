@@ -1,8 +1,8 @@
 package com.example.shiftsummer2023
 
 import android.content.Context
-import com.example.shiftsummer2023.domain.models.CharacterGender
-import com.example.shiftsummer2023.domain.models.CharacterStatus
+import com.example.shiftsummer2023.domain.model.CharacterGender
+import com.example.shiftsummer2023.domain.model.CharacterStatus
 
 fun formatCharacterStatus(context: Context, status: CharacterStatus): String =
     when (status) {

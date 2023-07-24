@@ -2,7 +2,7 @@ package com.example.shiftsummer2023.data.mappers
 
 import com.example.shiftsummer2023.data.local.entity.InfoEntity
 import com.example.shiftsummer2023.data.remote.dto.InfoDto
-import com.example.shiftsummer2023.domain.models.Info
+import com.example.shiftsummer2023.domain.model.Info
 
 fun InfoDto.toInfoEntity(): InfoEntity {
     return InfoEntity(
