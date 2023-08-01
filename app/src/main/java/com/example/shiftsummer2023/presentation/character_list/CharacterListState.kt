@@ -1,4 +1,4 @@
-package com.example.shiftsummer2023.presentation
+package com.example.shiftsummer2023.presentation.character_list
 
 import com.example.shiftsummer2023.domain.model.Character
 

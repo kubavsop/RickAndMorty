@@ -1,6 +1,7 @@
-package com.example.shiftsummer2023
+package com.example.shiftsummer2023.common
 
 import android.content.Context
+import com.example.shiftsummer2023.R
 import com.example.shiftsummer2023.domain.model.CharacterGender
 import com.example.shiftsummer2023.domain.model.CharacterStatus
 

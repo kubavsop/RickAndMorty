@@ -6,6 +6,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.room.Room
 import com.example.shiftsummer2023.R
+import com.example.shiftsummer2023.common.Constants
 import com.example.shiftsummer2023.data.local.CharacterDatabase
 import com.example.shiftsummer2023.data.local.entity.CharacterEntity
 import com.example.shiftsummer2023.data.remote.CharacterRemoteMediator
@@ -28,9 +29,9 @@ class DataModule {
 
     @Provides
     @Singleton
-    fun provideRickAndMortyApi(@ApplicationContext context: Context): RickAndMortyApi {
+    fun provideRickAndMortyApi(): RickAndMortyApi {
         val retrofit = Retrofit.Builder()
-            .baseUrl(context.getString(R.string.server_url))
+            .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         return retrofit.create(RickAndMortyApi::class.java)

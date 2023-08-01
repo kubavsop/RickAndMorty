@@ -1,4 +1,4 @@
-package com.example.shiftsummer2023.screen
+package com.example.shiftsummer2023.presentation.character_list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,9 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.example.shiftsummer2023.databinding.FragmentCharacterListBinding
-import com.example.shiftsummer2023.presentation.CharacterListViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
