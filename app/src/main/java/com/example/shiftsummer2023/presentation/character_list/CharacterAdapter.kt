@@ -1,4 +1,4 @@
-package com.example.shiftsummer2023.screen
+package com.example.shiftsummer2023.presentation.character_list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,9 +6,9 @@ import androidx.paging.PagingData
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.shiftsummer2023.databinding.CharacterItemBinding
-import com.example.shiftsummer2023.domain.models.Character
-import com.example.shiftsummer2023.formatCharacterGender
+import com.example.shiftsummer2023.domain.model.Character
 
 class CharacterAdapter :
     PagingDataAdapter<Character, CharacterAdapter.CharacterViewHolder>(CHARACTER_COMPARATOR) {
@@ -16,8 +16,7 @@ class CharacterAdapter :
     class CharacterViewHolder(private val binding: CharacterItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(character: Character) = with(binding) { // Потом изменю
-            name.text = character.name
-            gender.text = formatCharacterGender(itemView.context, gender = character.gender)
+            characterPhoto.load(character.image)
         }
     }
 

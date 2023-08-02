@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/characterListFragment"
-        android:name="com.example.shiftsummer2023.screen.CharacterListFragment"
+        android:name="com.example.shiftsummer2023.presentation.character_list.CharacterListFragment"
         android:label="fragment_character_list"
         tools:layout="@layout/fragment_character_list" />
 </navigation>

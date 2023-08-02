@@ -1,4 +1,4 @@
-package com.example.shiftsummer2023
+package com.example.shiftsummer2023.presentation
 
 import android.os.Bundle
 import android.util.Log

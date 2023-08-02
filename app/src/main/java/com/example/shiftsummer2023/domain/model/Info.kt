@@ -1,4 +1,4 @@
-package com.example.shiftsummer2023.domain.models
+package com.example.shiftsummer2023.domain.model
 
 data class Info(
     val count: Int,

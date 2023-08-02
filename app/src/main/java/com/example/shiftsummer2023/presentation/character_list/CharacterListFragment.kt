@@ -1,4 +1,4 @@
-package com.example.shiftsummer2023.screen
+package com.example.shiftsummer2023.presentation.character_list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,20 +7,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.paging.PagingData
-import androidx.paging.map
-import com.example.shiftsummer2023.data.local.entity.CharacterEntity
-import com.example.shiftsummer2023.data.mappers.toCharacter
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.shiftsummer2023.databinding.FragmentCharacterListBinding
-import com.example.shiftsummer2023.domain.models.Character
-import com.example.shiftsummer2023.presentation.CharacterListState
-import com.example.shiftsummer2023.presentation.CharacterListViewModel
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 class CharacterListFragment : Fragment() {
+
+    private companion object {
+        const val NUMBER_PER_ROW = 3
+    }
 
     private var _binding: FragmentCharacterListBinding? = null
     private val binding get() = _binding!!
@@ -39,6 +35,7 @@ class CharacterListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.characterList.adapter = CharacterAdapter()
+        binding.characterList.layoutManager = GridLayoutManager(requireContext(), NUMBER_PER_ROW)
         lifecycleScope.launch {
             with(binding) {
                 viewModel.characterPagingFlow.collectLatest { pagingData ->

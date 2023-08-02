@@ -1,4 +1,4 @@
-package com.example.shiftsummer2023.presentation
+package com.example.shiftsummer2023.presentation.character_list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
