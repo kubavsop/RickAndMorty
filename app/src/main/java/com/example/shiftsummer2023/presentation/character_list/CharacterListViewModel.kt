@@ -23,15 +23,4 @@ class CharacterListViewModel @Inject constructor(
         .flow
         .map { value: PagingData<CharacterEntity> -> value.map { it.toCharacter() } }
         .cachedIn(viewModelScope)
-
-
-//    private val _state = MutableLiveData<CharacterListState>(CharacterListState.Initial)
-//    val state: LiveData<CharacterListState> = _state
-//
-//    fun loadData() {
-//        viewModelScope.launch {
-//            val characters = getFirstPageUseCase.execute()
-//            _state.value = CharacterListState.Content(characters.results)
-//        }
-//    }
 }

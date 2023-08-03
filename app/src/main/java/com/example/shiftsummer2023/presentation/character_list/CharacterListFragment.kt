@@ -43,22 +43,7 @@ class CharacterListFragment : Fragment() {
                 }
             }
         }
-//        viewModel.state.observe(viewLifecycleOwner, ::handleState)
-//        viewModel.loadData()
     }
-
-//    private fun handleState(state: CharacterListState) {
-//        when (state) {
-//            CharacterListState.Initial -> Unit
-//            is CharacterListState.Content -> showContent(state.items)
-//        }
-//    }
-//
-//    private fun showContent(characters: List<Character>) {
-//        with(binding) {
-//            (characterList.adapter as? CharacterAdapter)?.characterList = characters
-//        }
-//    }
 
 
     override fun onDestroyView() {
