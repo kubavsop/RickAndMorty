@@ -8,15 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.shiftsummer2023.common.mainActivity
 import com.example.shiftsummer2023.databinding.FragmentCharacterListBinding
+import com.example.shiftsummer2023.domain.model.Character
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class CharacterListFragment : Fragment() {
-
-    private companion object {
-        const val NUMBER_PER_ROW = 3
-    }
 
     private var _binding: FragmentCharacterListBinding? = null
     private val binding get() = _binding!!
@@ -34,8 +32,7 @@ class CharacterListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.characterList.adapter = CharacterAdapter()
-        binding.characterList.layoutManager = GridLayoutManager(requireContext(), NUMBER_PER_ROW)
+        binding.characterList.adapter = CharacterAdapter(::handleCharacterClick)
         lifecycleScope.launch {
             with(binding) {
                 viewModel.characterPagingFlow.collectLatest { pagingData ->
@@ -43,6 +40,10 @@ class CharacterListFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun handleCharacterClick() {
+        mainActivity.openInformation()
     }
 
 

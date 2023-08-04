@@ -8,6 +8,15 @@
     <fragment
         android:id="@+id/characterListFragment"
         android:name="com.example.shiftsummer2023.presentation.character_list.CharacterListFragment"
-        android:label="fragment_character_list"
-        tools:layout="@layout/fragment_character_list" />
+        android:label="characterListFragment"
+        tools:layout="@layout/fragment_character_list" >
+        <action
+            android:id="@+id/action_characterListFragment_to_characterInformationFragment"
+            app:destination="@id/characterInformationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/characterInformationFragment"
+        android:name="com.example.shiftsummer2023.presentation.character_information.CharacterInformationFragment"
+        android:label="characterInformation"
+        tools:layout="@layout/character_information" />
 </navigation>
