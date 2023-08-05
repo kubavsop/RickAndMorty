@@ -17,7 +17,7 @@ class CharacterAdapter(private val characterClickListener: () -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(character: Character, characterClickListener: () -> Unit) = with(binding) { // Потом изменю
             characterPhoto.load(character.image)
-            itemView.setOnClickListener { characterClickListener }
+            itemView.setOnClickListener { characterClickListener() }
         }
     }
 
