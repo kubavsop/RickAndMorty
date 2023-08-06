@@ -10,14 +10,14 @@ import coil.load
 import com.example.shiftsummer2023.databinding.CharacterItemBinding
 import com.example.shiftsummer2023.domain.model.Character
 
-class CharacterAdapter(private val characterClickListener: () -> Unit) :
+class CharacterAdapter(private val characterClickListener: (characterId: Int) -> Unit) :
     PagingDataAdapter<Character, CharacterAdapter.CharacterViewHolder>(CHARACTER_COMPARATOR) {
 
     class CharacterViewHolder(private val binding: CharacterItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(character: Character, characterClickListener: () -> Unit) = with(binding) { // Потом изменю
+        fun bind(character: Character, characterClickListener: (characterId: Int) -> Unit) = with(binding) {
             characterPhoto.load(character.image)
-            itemView.setOnClickListener { characterClickListener() }
+            itemView.setOnClickListener { characterClickListener(character.id) }
         }
     }
 

@@ -5,23 +5,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.shiftsummer2023.R
-import com.example.shiftsummer2023.databinding.FragmentCharacterListBinding
+import androidx.navigation.fragment.navArgs
+import com.example.shiftsummer2023.databinding.FragmentCharacterInformationBinding
 
 class CharacterInformationFragment : Fragment() {
 
-    private var _binding: FragmentCharacterListBinding? = null
+    private var _binding: FragmentCharacterInformationBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        _binding = FragmentCharacterListBinding.inflate(inflater, container, false)
+        _binding = FragmentCharacterInformationBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-
+    private val args: CharacterInformationFragmentArgs by navArgs()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

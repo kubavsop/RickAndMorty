@@ -13,10 +13,12 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val navController: NavController get() {
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainer) as NavHostFragment
-        return navHostFragment.navController
-    }
+    private val navController: NavController
+        get() {
+            val navHostFragment =
+                supportFragmentManager.findFragmentById(R.id.fragmentContainer) as NavHostFragment
+            return navHostFragment.navController
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,8 +26,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
     }
 
-    fun openInformation() {
-        val action = CharacterListFragmentDirections.actionCharacterListFragmentToCharacterInformationFragment()
+    fun openInformation(characterId: Int) {
+        val action =
+            CharacterListFragmentDirections.actionCharacterListFragmentToCharacterInformationFragment(
+                characterId = characterId
+            )
         navController.navigate(action)
     }
 }

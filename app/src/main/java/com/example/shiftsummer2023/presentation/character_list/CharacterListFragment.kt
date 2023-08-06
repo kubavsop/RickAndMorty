@@ -42,8 +42,8 @@ class CharacterListFragment : Fragment() {
         }
     }
 
-    private fun handleCharacterClick() {
-        mainActivity.openInformation()
+    private fun handleCharacterClick(characterId: Int) {
+        mainActivity.openInformation(characterId = characterId)
     }
 
 
