@@ -15,7 +15,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CharacterListViewModel @Inject constructor(
-    private val getCharacterByIdUseCase: GetCharacterByIdUseCase,
     pager: Pager<Int, CharacterEntity>
 ) : ViewModel() {
 

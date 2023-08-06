@@ -6,4 +6,11 @@
     <string name="female">Female</string>
     <string name="genderless">Genderless</string>
     <string name="male">Male</string>
+
+    <string name="name">Name</string>
+    <string name="status">Status</string>
+    <string name="species">Species</string>
+    <string name="gender">Gender</string>
+    <string name="location">Location</string>
 </resources>
+
