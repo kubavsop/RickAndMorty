@@ -6,7 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.shiftsummer2023.domain.usecase.GetCharacterByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.launch
+import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
@@ -18,8 +20,16 @@ class CharacterInformationViewModel @Inject constructor(
 
     fun loanData(id: Int) {
         viewModelScope.launch {
-            val character = getCharacterByIdUseCase.execute(id)
-            _state.value = CharacterInformationState.Content(character)
+
+
+            try {
+                val character = getCharacterByIdUseCase.execute(id)
+                _state.value = CharacterInformationState.Content(character)
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                _state.value = CharacterInformationState.Error(e.message.toString())
+            }
         }
     }
 }

@@ -7,6 +7,7 @@
     tools:context=".presentation.character_information.CharacterInformationFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/informationContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/padding_16">
@@ -100,4 +101,36 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/gender" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        tools:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/errorContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/errorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            tools:text="@string/error" />
+
+        <Button
+            android:id="@+id/errorButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_16"
+            android:layout_gravity="center"
+            android:text="@string/error_try_again" />
+    </LinearLayout>
 </FrameLayout>

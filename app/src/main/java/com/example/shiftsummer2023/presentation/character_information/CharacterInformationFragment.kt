@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
@@ -33,21 +34,45 @@ class CharacterInformationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.state.observe(viewLifecycleOwner, ::handleState)
 
-        loanData()
+        characterData()
     }
 
-    private fun loanData() {
+    private fun characterData() {
         viewModel.loanData(args.characterId)
     }
     private fun handleState(state: CharacterInformationState) {
         when (state) {
             CharacterInformationState.Initial -> Unit
+            CharacterInformationState.Loading -> showProgress()
             is CharacterInformationState.Content -> showContent(state.character)
+            is CharacterInformationState.Error -> showError(state.msg)
         }
     }
 
+    private fun showError(message: String) {
+        with(binding) {
+            informationContent.isVisible = false
+            progressBar.isVisible = false
+            errorContent.isVisible = true
+
+            errorText.text = message
+            errorButton.setOnClickListener { characterData() }
+        }
+    }
+
+    private fun showProgress() {
+        with(binding) {
+            errorContent.isVisible = false
+            informationContent.isVisible = false
+            progressBar.isVisible = true
+        }
+    }
     private fun showContent(character: Character) {
         with(binding) {
+            progressBar.isVisible = false
+            errorContent.isVisible = false
+            informationContent.isVisible = true
+
             name.text = character.name
             status.text =
                 formatCharacterStatus(context = requireContext(), status = character.status)
