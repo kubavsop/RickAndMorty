@@ -13,14 +13,12 @@ fun CharactersDto.toCharactersEntity(): CharactersEntity {
 
 fun CharactersDto.toCharacters(): Characters {
     return Characters(
-        info = info.toInfo(),
         results = results.map { it.toCharacter() }
     )
 }
 
 fun CharactersEntity.toCharacters(): Characters {
     return Characters(
-        info = info.toInfo(),
         results = results.map { it.toCharacter() }
     )
 }

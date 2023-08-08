@@ -54,7 +54,6 @@ class CharacterInformationFragment : Fragment() {
             informationContent.isVisible = false
             progressBar.isVisible = false
             errorContent.isVisible = true
-
             errorText.text = message
             errorButton.setOnClickListener { characterData() }
         }

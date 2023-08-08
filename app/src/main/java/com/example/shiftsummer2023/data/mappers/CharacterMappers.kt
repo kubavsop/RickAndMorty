@@ -31,14 +31,9 @@ fun CharacterDto.toCharacter(): Character {
         name = name,
         status = CharacterStatus.valueOf(status.name),
         species = species,
-        type = type,
         gender = CharacterGender.valueOf(gender.name),
-        origin = origin.toCharacterLocation(),
         location = location.toCharacterLocation(),
         image = image,
-        episode = episode,
-        url = url,
-        created = created
     )
 }
 
@@ -48,13 +43,8 @@ fun CharacterEntity.toCharacter(): Character {
         name = name,
         status = CharacterStatus.valueOf(status.name),
         species = species,
-        type = type,
         gender = CharacterGender.valueOf(gender.name),
-        origin = origin.toCharacterLocation(),
         location = location.toCharacterLocation(),
         image = image,
-        episode = episode,
-        url = url,
-        created = created
     )
 }
