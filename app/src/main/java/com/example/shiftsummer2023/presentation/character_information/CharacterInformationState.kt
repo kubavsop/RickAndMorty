@@ -7,5 +7,5 @@ sealed interface CharacterInformationState {
 
     object Loading : CharacterInformationState
     data class Content(val character: Character) : CharacterInformationState
-    data class Error(val msg: String): CharacterInformationState
+    data class Error(val msg: String) : CharacterInformationState
 }

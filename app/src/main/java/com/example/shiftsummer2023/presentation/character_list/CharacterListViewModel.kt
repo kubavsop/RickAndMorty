@@ -8,7 +8,6 @@ import androidx.paging.cachedIn
 import androidx.paging.map
 import com.example.shiftsummer2023.data.local.entity.CharacterEntity
 import com.example.shiftsummer2023.data.mappers.toCharacter
-import com.example.shiftsummer2023.domain.usecase.GetCharacterByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject

@@ -5,7 +5,6 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.room.Room
-import com.example.shiftsummer2023.R
 import com.example.shiftsummer2023.common.Constants
 import com.example.shiftsummer2023.data.local.CharacterDatabase
 import com.example.shiftsummer2023.data.local.entity.CharacterEntity

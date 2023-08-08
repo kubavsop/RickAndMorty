@@ -8,20 +8,18 @@ import com.example.shiftsummer2023.domain.usecase.GetCharacterByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.launch
-import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
 class CharacterInformationViewModel @Inject constructor(
     private val getCharacterByIdUseCase: GetCharacterByIdUseCase,
-): ViewModel() {
-    private val _state: MutableLiveData<CharacterInformationState> = MutableLiveData(CharacterInformationState.Initial)
+) : ViewModel() {
+    private val _state: MutableLiveData<CharacterInformationState> =
+        MutableLiveData(CharacterInformationState.Initial)
     val state: LiveData<CharacterInformationState> = _state
 
     fun loanData(id: Int) {
         viewModelScope.launch {
-
-
             try {
                 val character = getCharacterByIdUseCase.execute(id)
                 _state.value = CharacterInformationState.Content(character)

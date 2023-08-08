@@ -15,10 +15,11 @@ class CharacterAdapter(private val characterClickListener: (characterId: Int) ->
 
     class CharacterViewHolder(private val binding: CharacterItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(character: Character, characterClickListener: (characterId: Int) -> Unit) = with(binding) {
-            characterPhoto.load(character.image)
-            itemView.setOnClickListener { characterClickListener(character.id) }
-        }
+        fun bind(character: Character, characterClickListener: (characterId: Int) -> Unit) =
+            with(binding) {
+                characterPhoto.load(character.image)
+                itemView.setOnClickListener { characterClickListener(character.id) }
+            }
     }
 
     var characterList: PagingData<Character> = PagingData.empty()

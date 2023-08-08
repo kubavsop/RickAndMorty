@@ -5,7 +5,6 @@ import com.example.shiftsummer2023.data.remote.dto.CharactersDto
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
-import retrofit2.http.Url
 
 interface RickAndMortyApi {
     @GET("character")

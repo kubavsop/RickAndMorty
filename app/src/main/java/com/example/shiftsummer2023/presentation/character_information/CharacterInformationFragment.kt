@@ -40,6 +40,7 @@ class CharacterInformationFragment : Fragment() {
     private fun characterData() {
         viewModel.loanData(args.characterId)
     }
+
     private fun handleState(state: CharacterInformationState) {
         when (state) {
             CharacterInformationState.Initial -> Unit
@@ -54,6 +55,7 @@ class CharacterInformationFragment : Fragment() {
             informationContent.isVisible = false
             progressBar.isVisible = false
             errorContent.isVisible = true
+
             errorText.text = message
             errorButton.setOnClickListener { characterData() }
         }
@@ -66,6 +68,7 @@ class CharacterInformationFragment : Fragment() {
             progressBar.isVisible = true
         }
     }
+
     private fun showContent(character: Character) {
         with(binding) {
             progressBar.isVisible = false

@@ -10,7 +10,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.shiftsummer2023.common.mainActivity
 import com.example.shiftsummer2023.databinding.FragmentCharacterListBinding
-import com.example.shiftsummer2023.domain.model.Character
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
