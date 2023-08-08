@@ -32,6 +32,7 @@ class CharacterListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.characterList.layoutManager = GridLayoutManager(requireContext(), 3)
         binding.characterList.adapter = CharacterAdapter(::handleCharacterClick)
         lifecycleScope.launch {
             with(binding) {
