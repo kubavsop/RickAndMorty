@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_character_list">
         <action
             android:id="@+id/action_characterListFragment_to_characterInformationFragment"
-            app:destination="@id/characterInformationFragment" />
+            app:destination="@id/characterInformationFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/characterInformationFragment"
@@ -20,8 +24,8 @@
         android:label="characterInformation"
         tools:layout="@layout/fragment_character_information">
         <argument
-        android:name="characterId"
-        android:defaultValue="0"
-        app:argType="integer" />
+            android:name="characterId"
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
 </navigation>
